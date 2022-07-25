@@ -10,7 +10,7 @@ import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.system.util.JwtUtil;
 import org.jeecg.common.util.RedisUtil;
-import org.jeecg.modules.cas.util.CasServiceUtil;
+import org.jeecg.modules.cas.util.CaServiceUtil;
 import org.jeecg.modules.cas.util.XmlUtils;
 import org.jeecg.modules.system.entity.SysDepart;
 import org.jeecg.modules.system.entity.SysUser;
@@ -47,11 +47,11 @@ public class CasClientController {
     private ISysDepartService sysDepartService;
 	@Autowired
     private RedisUtil redisUtil;
-	
+
 	@Value("${cas.prefixUrl}")
     private String prefixUrl;
-	
-	
+
+
 	@GetMapping("/validateLogin")
 	public Object validateLogin(@RequestParam(name="ticket") String ticket,
 								@RequestParam(name="service") String service,
@@ -61,7 +61,7 @@ public class CasClientController {
 		log.info("Rest api login.");
 		try {
 			String validateUrl = prefixUrl+"/p3/serviceValidate";
-			String res = CasServiceUtil.getStValidate(validateUrl, ticket, service);
+			String res = CaServiceUtil.getStValidate(validateUrl, ticket, service);
 			log.info("res."+res);
 			final String error = XmlUtils.getTextForElement(res, "authenticationFailure");
 			if(StringUtils.isNotEmpty(error)) {
@@ -99,7 +99,7 @@ public class CasClientController {
 			obj.put("userInfo", sysUser);
 			result.setResult(obj);
 			result.success("登录成功");
-	  		
+
 		} catch (Exception e) {
 			//e.printStackTrace();
 			result.error500(e.getMessage());
@@ -107,5 +107,5 @@ public class CasClientController {
 		return new HttpEntity<>(result);
 	}
 
-	
+
 }

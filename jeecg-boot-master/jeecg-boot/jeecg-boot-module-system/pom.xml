@@ -60,6 +60,7 @@
 			<version>${jeecgboot.version}</version>
 		</dependency>
 
+
 	</dependencies>
 
 	<build>
@@ -71,6 +72,24 @@
 					<!--SpringCloud运行环境 ,值改为true跳过SpringBoot启动打包插件 -->
 					<skip>${skip.springboot.maven}</skip>
 				</configuration>
+					<!--<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<configuration>
+						<layout>ZIP</layout>
+						<includes>
+							<include>
+								<groupId>nothing</groupId>
+								<artifactId>nothing</artifactId>
+							</include>
+						</includes>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+					</executions>-->
 			</plugin>
 		</plugins>
 	</build>

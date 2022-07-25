@@ -322,10 +322,10 @@ public class JeecgDemoController extends JeecgController<JeecgDemo, IJeecgDemoSe
         return Result.OK("1");
     }
 
-    @GetMapping(value = "/hello")
+/*    @GetMapping(value = "/hello")
     public String hello(HttpServletRequest req) {
         return "hello world!";
-    }
+    }*/
 
     // =====Vue3 Native  原生页面示例===============================================================================================
     @GetMapping(value = "/oneNative/list")
@@ -339,7 +339,7 @@ public class JeecgDemoController extends JeecgController<JeecgDemo, IJeecgDemoSe
         IPage<JSONObject> objectPage = queryDataPage(data, pageNo, pageSize);
         return Result.OK(objectPage);
     }
-    
+
     @PostMapping("/oneNative/add")
     public Result<String> oneNativeAdd(@RequestBody JSONObject jsonObject){
         Object oneNative = redisUtil.get("one-native");
@@ -355,7 +355,7 @@ public class JeecgDemoController extends JeecgController<JeecgDemo, IJeecgDemoSe
         redisUtil.set("one-native",nativeObject);
         return Result.OK("添加成功");
     }
-    
+
     @PutMapping("/oneNative/edit")
     public Result<String> oneNativeEdit(@RequestBody JSONObject jsonObject){
         JSONObject oneNative = (JSONObject)redisUtil.get("one-native");
@@ -378,7 +378,7 @@ public class JeecgDemoController extends JeecgController<JeecgDemo, IJeecgDemoSe
         }
         return Result.OK("删除成功");
     }
-    
+
     /**
      * 获取redis对应id的数据
      * @param data
@@ -455,5 +455,14 @@ public class JeecgDemoController extends JeecgController<JeecgDemo, IJeecgDemoSe
         return page;
     }
     // =====Vue3 Native  原生页面示例===============================================================================================
-    
+
+
+    @GetMapping("/hello")
+    public Result<String> hello(){
+        Result<String> result = new Result<>();
+        result.setResult("Hello World");
+        result.setSuccess(true);
+        return result;
+    }
+
 }
