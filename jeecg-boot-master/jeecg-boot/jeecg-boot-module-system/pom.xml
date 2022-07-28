@@ -59,7 +59,12 @@
 			<artifactId>jeecg-boot-module-demo</artifactId>
 			<version>${jeecgboot.version}</version>
 		</dependency>
-
+		<!-- DEMO 示例模块 -->
+		<dependency>
+			<groupId>com.yuan</groupId>
+			<artifactId>yuanTest</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 	</dependencies>
 
